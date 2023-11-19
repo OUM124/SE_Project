@@ -1,0 +1,100 @@
+@startuml
+
+!theme bluegray
+left to right direction
+skinparam packageStyle rect
+actor User
+actor System
+package "NourishMe Application" {
+
+  usecase "Register"
+  usecase "login"
+  usecase "confirm details"
+  usecase "fill up the registration form"
+  usecase "Connect"
+  usecase "visit website"
+  usecase "Ask for information"
+  usecase "Exception"
+  usecase "Info not valid"
+  usecase "Username already exists"
+  usecase "Username does not exist"
+  usecase "Choose journey"
+  usecase "Loose weight"
+  usecase "Gain weight"
+  usecase "Process data"
+  usecase "generate meal plans"
+  usecase "customize meal plan"
+  usecase "Provide Recipes"
+  usecase "Track Progress"
+  usecase "Set reminders"
+  usecase "Provide Insights"
+  usecase "Fill form (weight,height,age,calories...)"
+  usecase "Connect Community"
+  usecase "Provide suport"
+  usecase "select meal plans"
+  usecase "Functionalities"
+  usecase "Ensure security"
+  usecase "Support Choices"
+  usecase "Plan for Future"
+  usecase "ensure scalability"
+  
+  
+
+  User --> "Connect"
+  User --> "visit website"
+  User --> "Ask for information"
+  System --> "confirm details"
+  System --> "Process data"
+  System --> "generate meal plans"
+  System --> "Provide Recipes"
+  System --> "Track Progress"
+  System --> "Provide Insights"
+  System --> "Functionalities"
+  System --> "Set reminders"
+
+  
+  
+  
+  "Register" -up-|> "Connect"
+  "login" -up-|> "Connect"
+  "Info not valid" -up-|> "Exception"
+  "Username already exists" -up-|> "Exception"
+  "Username does not exist" -up-|> "Exception"
+  "Loose weight" -up-|> "Choose journey"
+  "Gain weight" -up-|> "Choose journey"
+  
+  "Connect Community" -up-|> "Functionalities"
+  "Ensure security" -up-|> "Functionalities"
+  "Provide suport" -up-|> "Functionalities"
+  "Plan for Future" -up-|> "Functionalities"
+  "ensure scalability" -up-|> "Functionalities"
+  
+  
+  
+  
+  
+  
+  "Register" .> "fill up the registration form" : <<include>>
+  "fill up the registration form" .> "Process data" : <<include>>
+  "Choose journey" .> "Connect" : <<include>>
+  "Fill form (weight,height,age,calories...)" .> "Choose journey" : <<include>>
+  "Track Progress" .> "Choose journey" : <<include>>
+  "Provide Insights" .> "Choose journey" : <<include>>
+  "generate meal plans" .> "Choose journey" : <<include>>
+  "Provide Recipes" .> "generate meal plans" : <<include>>
+  "select meal plans" .> "generate meal plans" : <<include>>
+  "Set reminders" .> "select meal plans" : <<include>>
+  "customize meal plan" .> "generate meal plans" : <<extend>>
+  "Connect" .> "Ask for information" : <<extend>>
+  "Exception" .> "Connect" : <<extend>>
+  "login" .> "confirm details" : <<include>>
+  
+  
+  
+  
+  
+  
+  
+}
+
+@enduml
